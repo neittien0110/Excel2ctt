@@ -1,0 +1,7 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/.vs/Excel2ctt/v15
+/Excel2ctt/bin
+/Excel2ctt/obj
