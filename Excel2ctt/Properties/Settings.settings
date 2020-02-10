@@ -5,5 +5,8 @@
     <Setting Name="GOTONEXTRECORD" Type="System.String" Scope="User">
       <Value Profile="(Default)">{TAB}{TAB}</Value>
     </Setting>
+    <Setting Name="WAITFORSWITCHINGAPP" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">5</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

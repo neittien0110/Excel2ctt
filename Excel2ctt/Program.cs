@@ -46,7 +46,7 @@ namespace Excel2ctt
         public static void AutoTyping()
         {
             StudentInformation si;
-            Thread.Sleep(2000);
+            Thread.Sleep(Properties.Settings.Default.WAITFORSWITCHINGAPP * 1000);
             for (int i = 0; i < StudentList.Count; i++)
             {
                 si = StudentList[i];
@@ -79,7 +79,7 @@ namespace Excel2ctt
                     }
                     
                 }
-                DialogResult res = MessageBox.Show("Có " + lines.Length + " sinh viên. \nSau khi bấm OK, bạn có 5 giây để chuyển sang website ctt-sis và đặt con trỏ chuột vào ô điểm đầu tiên cần nhập. Để bỏ qua và kết thúc, bấm Cancel.", "Chuẩn bị", MessageBoxButtons.OKCancel);
+                DialogResult res = MessageBox.Show("Có " + lines.Length + " sinh viên. \nSau khi bấm OK, bạn có " + Properties.Settings.Default.WAITFORSWITCHINGAPP +  " giây để chuyển sang website ctt-sis và đặt con trỏ chuột vào ô điểm đầu tiên cần nhập. Để bỏ qua và kết thúc, bấm Cancel.", "Chuẩn bị", MessageBoxButtons.OKCancel);
                 if (res != DialogResult.OK)
                 {
                     return;

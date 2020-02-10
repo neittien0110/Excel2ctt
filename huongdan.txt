@@ -4,6 +4,10 @@
 Thư mục chương trình: Excel2ctt\bin\Release
 Chương trình có thể chạy ngay, không cần cài đặt
 
+Xem thêm video hướng dẫn trên office365, và chỉ chia sẻ cho
+các tài khoản đăng nhập @hust.edu.vn
+https://web.microsoftstream.com/video/05efb8ff-17f5-426b-920a-9b7e0329912f
+
 Các bước chạy chương trình:
 1. Đưa điểm của SV vào file diem.txt theo qui tắc
       + Điểm của mỗi SV nằm trên một dòng
@@ -11,19 +15,32 @@ Các bước chạy chương trình:
 	  + Trình tự điểm trong file diem.txt phải đúng với STT
         của SV trong hệ thống của PĐT. (Tốt nhất nên sử dụng
 		Excel để VLOOKUP rồi copy cột điểm ra file này)
-2. Trên trình duyệt, đăng nhập vào hệ thống ctt-daotao
-3. Trên trình duyệt, tìm tới bảng điểm cần nhập
-4. Trên trình duyệt, đặt con trỏ chuột vào ô điểm số của SV  
+2. Bấm vào Excel2ctt.exe. Phần mềm sẽ hiện ra số lượng điểm 
+   sẽ điền và có nút bấm OK. Đừng bấm nút này vội.
+3. Trên trình duyệt, đăng nhập vào hệ thống ctt-daotao
+4. Trên trình duyệt, tìm tới bảng điểm cần nhập.
+5. Quay trở lại chương trình Excel2ctt. Bấm nút OK. 
+6. Trở lại trình duyệt, đặt con trỏ chuột vào ô điểm số của SV  
    đầu tiên cần nhập.
-5. Quay trở lại chương trình Excel2ctt, bấm vào Excel2ctt.exe
-6. Khi chương trình Excel2ctt.exe chạy, bấm nút OK, rồi 
-   nhanh chóng quay trở lại trình duyệt với ô điểm số đã chọn
 7. Phần mềm sẽ tự động điền điểm vào các ô điểm số cho tất
    cả SV.   
 8. Kiểm tra lại điểm cẩn thận. Phần mềm sẽ không tự submit điểm
 9. Bấm nút Gửi điểm cho Phòng đào tạo. Xong việc.
 
  
+ ------------------------------------------------------------
+--                HƯỚNG DẪN NÂNG CAO
+------------------------------------------------------------
+Phần mềm cho phép tinh chỉnh một số cấu hình chạy. Các cấu 
+hình này được lưu và chỉnh sửa trong file Excel2ctt.exe.config
+ở cùng thư mục chạy. Cụ thể là: 
+
+GOTONEXTRECORD: Các kí tự được gửi đi sau khi kết thúc một dòng 
+nhập liệu, để chuyển sang dòng kế tiếp. Mặc định là {TAB}{TAB}
+
+WAITFORSWITCHINGAPP: Thời gian đợi để chuyển từ app này sang
+website của phòng đào tạo. Đơn vị giây. Mặc định 5 giây.
+
 ------------------------------------------------------------
 --                MÃ NGUỒN
 ------------------------------------------------------------
