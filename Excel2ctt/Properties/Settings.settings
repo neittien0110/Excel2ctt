@@ -8,5 +8,17 @@
     <Setting Name="WAITFORSWITCHINGAPP" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">5</Value>
     </Setting>
+    <Setting Name="INPUTFORMAT" Type="System.String" Scope="User">
+      <Value Profile="(Default)">&lt;ten&gt;;&lt;diem&gt;</Value>
+    </Setting>
+    <Setting Name="COMMENT" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Trường INPUTFORMAT hỗ trợ các từ khóa sau để bóc tách dữ liệu đầu vào  &lt;diem&gt; &lt;mssv&gt; &lt;stt&gt; &lt;ten&gt;</Value>
+    </Setting>
+    <Setting Name="INPUTFILENAME" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Tên file đầu vào. Ví dụ: diem.txt</Value>
+    </Setting>
+    <Setting Name="SEPERATOR" Type="System.String" Scope="User">
+      <Value Profile="(Default)">;</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

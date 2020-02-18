@@ -46,5 +46,54 @@ namespace Excel2ctt.Properties {
                 this["WAITFORSWITCHINGAPP"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("<ten>;<diem>")]
+        public string INPUTFORMAT {
+            get {
+                return ((string)(this["INPUTFORMAT"]));
+            }
+            set {
+                this["INPUTFORMAT"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Trường INPUTFORMAT hỗ trợ các từ khóa sau để bóc tách dữ liệu đầu vào  <diem> <ms" +
+            "sv> <stt> <ten>")]
+        public string COMMENT {
+            get {
+                return ((string)(this["COMMENT"]));
+            }
+            set {
+                this["COMMENT"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Tên file đầu vào. Ví dụ: diem.txt")]
+        public string INPUTFILENAME {
+            get {
+                return ((string)(this["INPUTFILENAME"]));
+            }
+            set {
+                this["INPUTFILENAME"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute(";")]
+        public string SEPERATOR {
+            get {
+                return ((string)(this["SEPERATOR"]));
+            }
+            set {
+                this["SEPERATOR"] = value;
+            }
+        }
     }
 }

@@ -9,7 +9,10 @@ using System.IO;
 
 namespace Excel2ctt
 {
-    class  StudentInformation
+    /// <summary>
+    ///      Chứa thông tin về 1 SV/1 đối tượng cần nhập điểm
+    /// </summary>
+    class StudentInformation
     {
         static StudentInformation()
         {
@@ -33,6 +36,45 @@ namespace Excel2ctt
             NewItem.Grade = Grade;
             NewItem.MSSV = MSSV;
             NewItem.Name = Name;
+        }
+    }
+
+    /// <summary>
+    ///     Chứa các hàm để tạo nên dữ liêu về 1 đối tượng SV/đối tượng cần nhập điểm
+    /// </summary>
+    class StudentInformationBuilder: StudentInformation
+    {
+        /// <summary>
+        ///     Tên/ý nghĩa của các cột thông tin đâu vào
+        /// </summary>
+        public static string[] FieldNames; 
+
+        /// <summary>
+        ///      Nhập điểm
+        /// </summary>
+        /// <param name="values"> mảng chứa thông tin điểm, tuân theo đúng trình tự như <see cref="FieldNames"/> </param>
+        public StudentInformationBuilder(string[] values)
+        {
+            int i;
+            for (i=0; i < values.Length; i++)
+            {
+                if (FieldNames[i]=="<diem>")
+                {
+                    Grade = Convert.ToDouble(values[i]);
+                }
+                else if (FieldNames[i] == "<stt>")
+                {
+                    STT = Convert.ToInt32(values[i]);
+                }
+                else if (FieldNames[i] == "<ten>")
+                {
+                    Name = values[i].Trim();
+                }
+                else if (FieldNames[i] == "<mssv>")
+                {
+                    MSSV = Convert.ToInt32(values[i]);
+                }
+            }
         }
     }
 
@@ -63,19 +105,31 @@ namespace Excel2ctt
         
         static void Main(string[] args)
         {
+            int i;
+            
+            string[] fields;   //để phân tách các cột trong dòng thông tin
+
+            // Phân tích chuỗi cú pháp để biết ý nghĩa của các cột thông tin. Ví dụ   <name>;<grade>
+            StudentInformationBuilder.FieldNames = Properties.Settings.Default.INPUTFORMAT.Split(Properties.Settings.Default.SEPERATOR.ToCharArray());
+
             /// Đưa điểm vào danh sách
             try
             {
-                string[] lines = File.ReadAllLines("diem.txt");
+                // đọc tất cả các dòng của file đầu vào
+                string[] lines = File.ReadAllLines(Properties.Settings.Default.INPUTFILENAME);
                 foreach (string line in lines)
                 {
                     if (line == String.Empty)
                     {
+                        // nếu dòng trống, tức là SV tương ứng bị 0
                         new StudentInformation(0, 0, "", 0);
                     }
                     else
                     {
-                        new StudentInformation(0, 0, "", Convert.ToDouble(line));
+                        // tách 1 dòng thành các trường, phân tách bởi các kí tự trong cấu hình 
+                        fields = line.Split(Properties.Settings.Default.SEPERATOR.ToCharArray());
+                        // đưa vào cấu trúc để bóc tách và tự bổ sung vào danh sách
+                        new StudentInformationBuilder(fields);
                     }
                     
                 }
