@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading;
 using System.Data.Linq;
 using System.Windows.Forms;
 using System.IO;
+using System.Diagnostics;
 
 namespace Excel2ctt
 {
@@ -78,39 +78,20 @@ namespace Excel2ctt
         }
     }
 
-    /// <summary>
-    ///      Nhập điểm vào website của pđt
-    /// </summary>
-    class CTTSite
-    {
-        public static List<StudentInformation> StudentList = null;
-
-        public static void AutoTyping()
-        {
-            StudentInformation si;
-            Thread.Sleep(Properties.Settings.Default.WAITFORSWITCHINGAPP * 1000);
-            for (int i = 0; i < StudentList.Count; i++)
-            {
-                si = StudentList[i];
-                SendKeys.SendWait(si.Grade.ToString());
-                // Chuyển tới bản ghi kế tiếp
-                SendKeys.SendWait(Properties.Settings.Default.GOTONEXTRECORD);
-            }
-        }
-    }
-
     class Program
     {
 
         
         static void Main(string[] args)
         {
-            int i;
-            
+
             string[] fields;   //để phân tách các cột trong dòng thông tin
 
             // Phân tích chuỗi cú pháp để biết ý nghĩa của các cột thông tin. Ví dụ   <name>;<grade>
             StudentInformationBuilder.FieldNames = Properties.Settings.Default.INPUTFORMAT.Split(Properties.Settings.Default.SEPERATOR.ToCharArray());
+
+            /// Tạo đối tượng cần nhập điểm
+            Victim site = new Victim(Properties.Settings.Default.AUTOACTIVATE);
 
             /// Đưa điểm vào danh sách
             try
@@ -133,7 +114,15 @@ namespace Excel2ctt
                     }
                     
                 }
-                DialogResult res = MessageBox.Show("Có " + lines.Length + " sinh viên. \nSau khi bấm OK, bạn có " + Properties.Settings.Default.WAITFORSWITCHINGAPP +  " giây để chuyển sang website ctt-sis và đặt con trỏ chuột vào ô điểm đầu tiên cần nhập. Để bỏ qua và kết thúc, bấm Cancel.", "Chuẩn bị", MessageBoxButtons.OKCancel);
+
+                /// Tự động Activate site nạn nhân để tiền kiểm tra.
+                site.Activate();
+
+                /// Quay trở lại tiến trình hiện thời để nhìn rõ thông báo
+                Victim.SetForegroundWindow(Process.GetCurrentProcess().MainWindowHandle);
+
+                /// Hiện thông báo confirm với người dùng
+                DialogResult res = MessageBox.Show("Có " + lines.Length + " dòng nhập liệu. \nSau khi bấm OK, bạn có " + Properties.Settings.Default.WAITFORSWITCHINGAPP + " giây để chuyển sang website ctt-sis và đặt con trỏ chuột vào ô điểm đầu tiên cần nhập. Để bỏ qua và kết thúc, bấm Cancel.\n" + lines[0]??"" + "\n" + lines[1]??"" + "\n" + lines[2]??"", "Chuẩn bị", MessageBoxButtons.OKCancel);
                 if (res != DialogResult.OK)
                 {
                     return;
@@ -146,10 +135,10 @@ namespace Excel2ctt
             }
 
             /// Đưa thông tin điểm vào class phụ trách
-            CTTSite.StudentList = StudentInformation.list;
+            Victim.StudentList = StudentInformation.list;
 
             /// Thực hiện nhập điểm
-            CTTSite.AutoTyping();
+            site.AutoTyping();
         }
     }
 }

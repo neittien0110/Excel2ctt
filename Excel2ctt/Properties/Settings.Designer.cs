@@ -37,18 +37,6 @@ namespace Excel2ctt.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("5")]
-        public int WAITFORSWITCHINGAPP {
-            get {
-                return ((int)(this["WAITFORSWITCHINGAPP"]));
-            }
-            set {
-                this["WAITFORSWITCHINGAPP"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("<ten>;<diem>")]
         public string INPUTFORMAT {
             get {
@@ -74,7 +62,31 @@ namespace Excel2ctt.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Tên file đầu vào. Ví dụ: diem.txt")]
+        [global::System.Configuration.DefaultSettingValueAttribute(";")]
+        public string SEPERATOR {
+            get {
+                return ((string)(this["SEPERATOR"]));
+            }
+            set {
+                this["SEPERATOR"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("2")]
+        public int WAITFORSWITCHINGAPP {
+            get {
+                return ((int)(this["WAITFORSWITCHINGAPP"]));
+            }
+            set {
+                this["WAITFORSWITCHINGAPP"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("diem.txt")]
         public string INPUTFILENAME {
             get {
                 return ((string)(this["INPUTFILENAME"]));
@@ -86,13 +98,13 @@ namespace Excel2ctt.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute(";")]
-        public string SEPERATOR {
+        [global::System.Configuration.DefaultSettingValueAttribute("CTSV")]
+        public string AUTOACTIVATE {
             get {
-                return ((string)(this["SEPERATOR"]));
+                return ((string)(this["AUTOACTIVATE"]));
             }
             set {
-                this["SEPERATOR"] = value;
+                this["AUTOACTIVATE"] = value;
             }
         }
     }
