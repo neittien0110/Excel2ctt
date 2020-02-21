@@ -81,9 +81,15 @@ namespace Excel2ctt
     class Program
     {
 
-        
+        [STAThread]
         static void Main(string[] args)
         {
+
+            Application.Run(new BrowserForm());
+            return;
+
+
+
 
             string[] fields;   //để phân tách các cột trong dòng thông tin
 
