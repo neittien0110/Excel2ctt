@@ -107,5 +107,17 @@ namespace Excel2ctt.Properties {
                 this["AUTOACTIVATE"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool KEEPALIVE {
+            get {
+                return ((bool)(this["KEEPALIVE"]));
+            }
+            set {
+                this["KEEPALIVE"] = value;
+            }
+        }
     }
 }

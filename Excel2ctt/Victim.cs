@@ -44,7 +44,8 @@ namespace Excel2ctt
             for (int i = 0; i < StudentList.Count; i++)
             {
                 si = StudentList[i];
-                SendKeys.SendWait(si.Grade.ToString());
+                SendKeys.SendWait(si.Name.ToString());
+                Thread.Sleep(10);
                 // Chuyển tới bản ghi kế tiếp
                 SendKeys.SendWait(Properties.Settings.Default.GOTONEXTRECORD);
             }
@@ -56,7 +57,7 @@ namespace Excel2ctt
         /// <param name="Title">Một phần của tiêu đề cửa sổ nhập liệu. = null nếu bỏ qua. <> null thì chương trình sẽ tự động activate cửa số này trước khi nhập liệu.</param>
         public Victim(string Title = null)
         {
-            if (Title == null)
+            if (Title == null || Title == "")
             {
                 return;
             }
@@ -69,12 +70,13 @@ namespace Excel2ctt
             {
                 if (!String.IsNullOrEmpty(process.MainWindowTitle))
                 {
-                    Console.WriteLine("Process:   {0}", process.ProcessName);
-                    Console.WriteLine("    ID   : {0}", process.Id);
-                    Console.WriteLine("    Title: {0} \n", process.MainWindowTitle);
                     if (process.MainWindowTitle.Contains(Title))
                     {
                         VictimProcess = process;
+                        Console.WriteLine("Process:   {0}", process.ProcessName);
+                        Console.WriteLine("    ID   : {0}", process.Id);
+                        Console.WriteLine("    Title: {0} \n", process.MainWindowTitle);
+                        break;
                     }
                 }
             }

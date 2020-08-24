@@ -81,7 +81,7 @@ namespace Excel2ctt
     class Program
     {
 
-        
+
         static void Main(string[] args)
         {
 
@@ -112,7 +112,7 @@ namespace Excel2ctt
                         // đưa vào cấu trúc để bóc tách và tự bổ sung vào danh sách
                         new StudentInformationBuilder(fields);
                     }
-                    
+
                 }
 
                 /// Tự động Activate site nạn nhân để tiền kiểm tra.
@@ -122,7 +122,7 @@ namespace Excel2ctt
                 Victim.SetForegroundWindow(Process.GetCurrentProcess().MainWindowHandle);
 
                 /// Hiện thông báo confirm với người dùng
-                DialogResult res = MessageBox.Show("Có " + lines.Length + " dòng nhập liệu. \nSau khi bấm OK, bạn có " + Properties.Settings.Default.WAITFORSWITCHINGAPP + " giây để chuyển sang website ctt-sis và đặt con trỏ chuột vào ô điểm đầu tiên cần nhập. Để bỏ qua và kết thúc, bấm Cancel.\n" + lines[0]??"" + "\n" + lines[1]??"" + "\n" + lines[2]??"", "Chuẩn bị", MessageBoxButtons.OKCancel);
+                DialogResult res = MessageBox.Show("Có " + lines.Length + " dòng nhập liệu. \nSau khi bấm OK, bạn có " + Properties.Settings.Default.WAITFORSWITCHINGAPP + " giây để chuyển sang website ctt-sis và đặt con trỏ chuột vào ô điểm đầu tiên cần nhập. Để bỏ qua và kết thúc, bấm Cancel.\n" + lines[0] ?? "" + "\n" + lines[1] ?? "" + "\n" + lines[2] ?? "", "Chuẩn bị", MessageBoxButtons.OKCancel);
                 if (res != DialogResult.OK)
                 {
                     return;
@@ -135,10 +135,20 @@ namespace Excel2ctt
             }
 
             /// Đưa thông tin điểm vào class phụ trách
-            Victim.StudentList = StudentInformation.list;
+                    Victim.StudentList = StudentInformation.list;
 
-            /// Thực hiện nhập điểm
-            site.AutoTyping();
+            do
+            {
+                /// Thực hiện nhập điểm
+                site.AutoTyping();
+                if (Properties.Settings.Default.KEEPALIVE)
+                {
+                    if (MessageBox.Show("Chọn lại vào textbox nhập điểm đầu tiên ở trang ctsv, rồi bấm okay để lặp lại quá trình. Bấm Cancel để kết thúc chương trình", "zz", MessageBoxButtons.OKCancel)==DialogResult.Cancel)
+                    {
+                        break;
+                    }
+                }
+            } while (true);
         }
     }
 }
