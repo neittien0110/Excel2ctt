@@ -45,7 +45,7 @@ namespace Excel2ctt
             {
                 si = StudentList[i];
                 SendKeys.SendWait(si.Name.ToString());
-                Thread.Sleep(10);
+                Thread.Sleep(Properties.Settings.Default.WAITFORNEXTRECORD);
                 // Chuyển tới bản ghi kế tiếp
                 SendKeys.SendWait(Properties.Settings.Default.GOTONEXTRECORD);
             }
