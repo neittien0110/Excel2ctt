@@ -148,6 +148,10 @@ namespace Excel2ctt
                         break;
                     }
                 }
+                else
+                {
+                    break;
+                }
             } while (true);
         }
     }
