@@ -1,4 +1,6 @@
-﻿using System;
+﻿//#define EDX
+
+using System;
 using System.Collections.Generic;
 using System.Threading;
 using System.Text;
@@ -44,10 +46,29 @@ namespace Excel2ctt
             for (int i = 0; i < StudentList.Count; i++)
             {
                 si = StudentList[i];
+#if EDX
                 SendKeys.SendWait(si.Name.ToString());
-                Thread.Sleep(Properties.Settings.Default.WAITFORNEXTRECORD);
+                SendKeys.SendWait(Properties.Settings.Default.GOTONEXTRECORD);
+                SendKeys.SendWait(si.field1.ToString());
+                SendKeys.SendWait(Properties.Settings.Default.GOTONEXTRECORD);
+                SendKeys.SendWait(si.field2.ToString());
+                SendKeys.SendWait(Properties.Settings.Default.GOTONEXTRECORD);
+                SendKeys.SendWait(si.field3.ToString());
+
+#else
+                SendKeys.SendWait(si.Grade.ToString());
+#endif
+
                 // Chuyển tới bản ghi kế tiếp
                 SendKeys.SendWait(Properties.Settings.Default.GOTONEXTRECORD);
+
+#if EDX
+                SendKeys.SendWait("{Enter}");
+                if (MessageBox.Show("Tiếp tục nhé","Hỏi đáp", MessageBoxButtons.OKCancel) == DialogResult.Cancel)
+                {
+                    break;
+                }
+#endif
             }
         }
 
@@ -70,6 +91,7 @@ namespace Excel2ctt
             {
                 if (!String.IsNullOrEmpty(process.MainWindowTitle))
                 {
+
                     if (process.MainWindowTitle.Contains(Title))
                     {
                         VictimProcess = process;

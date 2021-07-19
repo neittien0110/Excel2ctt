@@ -23,19 +23,25 @@ namespace Excel2ctt
         public int MSSV;
         public string Name;
         public double Grade;
+        public string field1;
+        public string field2;
+        public string field3;
 
         public StudentInformation()
         {
             list.Add(this);
         }
 
-        public StudentInformation(int STT, int MSSV, string Name, double Grade)
+        public StudentInformation(int STT, int MSSV, string Name, double Grade, string filed1 = null, string filed2 = null, string filed3 = null)
         {
             StudentInformation NewItem = new StudentInformation();
             NewItem.STT = STT;
             NewItem.Grade = Grade;
             NewItem.MSSV = MSSV;
             NewItem.Name = Name;
+            NewItem.field1 = field1;
+            NewItem.field2 = field2;
+            NewItem.field3 = field3;
         }
     }
 
@@ -73,6 +79,18 @@ namespace Excel2ctt
                 else if (FieldNames[i] == "<mssv>")
                 {
                     MSSV = Convert.ToInt32(values[i]);
+                }
+                else if (FieldNames[i] == "<field1>")
+                {
+                    field1 = values[i].Trim();
+                }
+                else if (FieldNames[i] == "<field2>")
+                {
+                    field2 = values[i].Trim();
+                }
+                else if (FieldNames[i] == "<field3>")
+                {
+                    field3 = values[i].Trim();
                 }
             }
         }
