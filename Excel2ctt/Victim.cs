@@ -40,7 +40,7 @@ namespace Excel2ctt
             Activate();
 
             /// Đợi trong khoảng thời gian đã ghi trong file cấu hình
-            Thread.Sleep(Properties.Settings.Default.WAITFORSWITCHINGAPP * 1000);
+            Thread.Sleep(Properties.Settings.Default.WAITFORSWITCHINGAPP);
 
             /// Nhập liệu
             for (int i = 0; i < StudentList.Count; i++)
@@ -56,9 +56,10 @@ namespace Excel2ctt
                 SendKeys.SendWait(si.field3.ToString());
 
 #else
-                SendKeys.SendWait(si.Grade.ToString());
+                SendKeys.SendWait(StudentInformationBuilder.OutputString(si));
 #endif
-
+                // Đợi một tí
+                Thread.Sleep(Properties.Settings.Default.WAITFORNEXTRECORD);
                 // Chuyển tới bản ghi kế tiếp
                 SendKeys.SendWait(Properties.Settings.Default.GOTONEXTRECORD);
 

@@ -4,9 +4,7 @@
 Thư mục chương trình: Excel2ctt\bin\Release
 Chương trình có thể chạy ngay, không cần cài đặt
 
-Xem thêm video hướng dẫn trên office365, và chỉ chia sẻ cho
-các tài khoản đăng nhập @hust.edu.vn
-https://web.microsoftstream.com/video/05efb8ff-17f5-426b-920a-9b7e0329912f
+Xem thêm video hướng dẫn trên https://player.vimeo.com/video/1007337512?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479
 
 Các bước chạy chương trình:
 1. Đưa điểm của SV vào file diem.txt theo qui tắc

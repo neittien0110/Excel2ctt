@@ -2,9 +2,10 @@
 # This .gitignore file was automatically created by Microsoft(R) Visual Studio.
 ################################################################################
 
-/.vs/Excel2ctt/v15
-/Excel2ctt/bin
-/Excel2ctt/obj
-/.vs/Excel2ctt/v16
-/.config
-/Logs
+.vs
+Excel2ctt/.vs
+Excel2ctt/obj
+Excel2ctt/logs/xvba_debug.log
+.config
+Logs
+docs/doxyoutput
