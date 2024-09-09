@@ -1,6 +1,7 @@
 # CHƯƠNG TRÌNH ĐIỀN SỐ LIỆU VÀO FORM 
 
 Thư mục chương trình: [**Excel2ctt\bin\Debug**](https://github.com/neittien0110/Excel2ctt)
+hoặc tải file zip ở đây [Zip file](https://github.com/neittien0110/Excel2ctt/releases)
 Chương trình có thể chạy ngay, không cần cài đặt
 
 Xem thêm video hoạt động\
